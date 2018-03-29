@@ -1,0 +1,217 @@
+%%% Author: Steffen Walter  %%%
+%%% Alias: firefly-serenity %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% DHBW Stuttgart compliant LaTeX tempalte
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[
+a4paper,   
+titlepage,  
+halfparskip,
+12pt        
+]{scrartcl}  
+
+%%% packages selection for different purposes (see documentation of the package maintainer for more info)
+\usepackage[ngerman]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{ae,aecompl}
+\usepackage{helvet}
+\renewcommand{\familydefault}{\sfdefault}
+%\usepackage{amsmath,amssymb,amstext}
+\usepackage{psfrag}
+%\usepackage{listings}
+%\lstset{language=Python} 
+%\usepackage{units}
+\usepackage{cite}
+\usepackage{caption}
+\usepackage{tabto}
+\usepackage{xcolor}
+\usepackage{longtable}
+\usepackage{lmodern}
+\usepackage{setspace}
+\usepackage{fancyhdr}
+\usepackage{tablefootnote}
+\usepackage[smaller, nohyperlinks, printonlyused, withpage]{acronym}
+
+%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%
+%%% layout
+%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%
+
+% Enables blockset
+\sloppy
+
+\usepackage{geometry}
+\geometry{a4paper, top=25mm, left=30mm, right=25mm, bottom=30mm, headsep=10mm, footskip=12mm}
+
+%%% PDF options
+
+\usepackage{ifpdf}
+
+\ifpdf %if -> pdflatex
+  \usepackage[pdftex]{graphicx}
+
+  \pdfcompresslevel=9
+  \usepackage[%
+    pdftex=true,      
+    backref,    
+    pagebackref=false,
+    colorlinks=false,
+    hyperfootnotes=false,
+    bookmarks=true,   
+    bookmarksopen=false,
+    bookmarksnumbered=false, 
+    pdfpagemode=None   
+  ]{hyperref}
+  \DeclareGraphicsExtensions{.pdf}
+\else %else -> latex 
+  \usepackage[dvips]{graphicx}
+  \DeclareGraphicsExtensions{.eps}
+  \usepackage[dvips, colorlinks=false]{hyperref}
+\fi
+
+%%% PDF-Meta-Information 
+\hypersetup{
+  pdftitle={xxx},
+  pdfauthor={Steffen Walter},
+  pdfsubject={sss,eee,ccc},
+  pdfcreator={Accomplished with LaTeX2e and pdfLaTeX with hyperref-package.},
+  pdfproducer={company ag},
+  pdfkeywords={}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%
+%%% begin document
+%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%
+
+%%% header and footer before the actual body
+
+\begin{document}
+\pagestyle{fancy}
+\fancyhf{} %% clear all previous settings
+\fancyhead[R]{\thepage} %% pagenumber in the upper right corner
+\fancyhead[L]{Verzeichnisse} %% section description in the upper left corner
+\pagenumbering{roman}
+
+%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%
+%%% titlepage
+%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{titlepage}
+\begin{longtable}{l|r}
+{\includegraphics[height=1.5cm]{companylogo}} &
+{\includegraphics[height=1.5cm]{dhbwlogo}}
+\end{longtable}
+% \enlargethispage{20mm}
+\bigskip
+\bigskip
+\begin{center}
+\vspace*{12mm} {\LARGE\bf Title of my Document}\
+\vspace*{12mm} % {\large\bf Praxisarbeit des zweiten Studienjahres}\\
+\vspace*{3mm} {\large\bf Theoretische Ausarbeitung}\\
+\vspace*{12mm} des Studiengangs Informationstechnik (B.Sc.)\\ an der Dualen Hochschule Baden-Württemberg Stuttgart\\
+% \vspace*{3mm} an der Dualen Hochschule Baden-Württemberg\\
+\vspace*{12mm} von\\
+\vspace*{3mm} {\large\bf Steffen Walter}\\
+\vspace*{12mm} 05.04.2018\\
+\end{center}
+\vfill
+\begin{spacing}{1.5}
+\begin{tabbing}
+mmmmmmmmmmmmmmmmmmmmmmmmmm \= \kill
+\textbf{Bearbeitungszeitraum} \> 4 Wochen\\
+\textbf{Matrikelnummer, Kurs} \> 1100000, TINF99IN\\
+\textbf{Ausbildungsunternehmen} \> company, city\\
+\textbf{Betreuer des Ausbildungsunternehmens} \> Max Maier\\
+% \textbf{Gutachter der Hochschule} \> Bernd Beutlin\\
+\end{tabbing}
+\end{spacing}
+\end{titlepage}
+
+%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%
+%%% dictionaries
+%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%
+
+\newpage
+\tableofcontents
+\newpage
+\section*{Abkürzungsverzeichnis} %%Title for list of acronyms
+\begin{acronym}[Name]
+ \acro{PC}{Personal Computer}
+\end{acronym}
+\listoffigures
+\listoftables
+\setcounter{table}{0} %% sets tabel counter to 0 to ignore table from frontpage
+\newpage
+\begin{onehalfspacing} %% set space between lines to 1.5
+\pagestyle{fancy}
+\fancyhf{} %% remove all previous settings
+%\renewcommand{\headrulewidth}{0pt} %%% activate to remove seperation line between head and main body
+\fancyhead[L]{\leftmark} %% section name and number in the upper left corner
+\fancyhead[R]{\thepage} %% pagenumber in upper right corner
+\pagenumbering{arabic}
+
+%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%
+%%% begin main document
+%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Kapiteltitel}
+\label{sec:kap}
+Desktop \acs{PC}\footnote{\cite[Crusher, W. (2014) S. 53]{quelle}}
+\newpage
+\subsection{Unterkapitel}
+\label{subsec:kap}
+Wie sin in \autoref{fig:logo} sehen: 
+\begin{figure}[h]
+  \centering
+  \includegraphics[height=5.0cm]{logo}
+  \caption[Beschreibung im Verzeichnis]{Bildunterschrift\footnotemark}\label{fig:logo}
+\end{figure}
+\footnotetext{\cite[Crusher, W. (2014) S. 53]{quelle}}
+\newpage
+\subsubsection{Unterunterkapitel
+\label{subsubsec:kap}
+Wie in \autofef{tbl:test} zu sehen
+\begin{table}[h]
+\centering
+  \begin{tabular}{ l | c | c | c | r }
+  \hline
+  8 & 9 & 10 \\
+  7 & 6 & 5 \\
+  \hline
+  \end{tabular}
+\caption[Beschreibung im Verzeichnis]{Beschreibung an der Tabelle\footnotemark}\label{tbl:test}
+\end{table}
+\footnotetext{cite[Crusher, W. (2014) S. 53]{quelle}}
+
+%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%
+%%% end main document
+%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%
+
+\appendix
+\bibliographystyle{plain}
+\newpage
+\bibliography{literatur}
+
+\end{onehalfspacing}
+\end{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
