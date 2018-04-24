@@ -1,6 +1,8 @@
 # Template: LaTeX-DHBW-Stuttgart
 Template für Dokumente an der DHBW Stuttgart mit den Kriterien für wissenschaftliches Arbeiten Stand April 2018
 
+Beispielausgabe: main.pdf
+
 LaTeX Pakete: 
 * babel
 * inputenc
