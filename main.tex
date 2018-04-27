@@ -25,6 +25,7 @@ halfparskip,
 %\usepackage{listings}
 %\lstset{language=Python} 
 %\usepackage{units}
+\usepackage[nottoc]{tocbibind}
 \usepackage{cite}
 \usepackage{caption}
 \usepackage{tabto}
@@ -34,7 +35,7 @@ halfparskip,
 \usepackage{setspace}
 \usepackage{fancyhdr}
 \usepackage{tablefootnote}
-\usepackage[smaller, nohyperlinks, printonlyused, withpage]{acronym}
+\usepackage[printonlyused]{acronym}
 
 %%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%
@@ -93,11 +94,6 @@ halfparskip,
 %%% header and footer before the actual body
 
 \begin{document}
-\pagestyle{fancy}
-\fancyhf{} %% clear all previous settings
-\fancyhead[R]{\thepage} %% pagenumber in the upper right corner
-\fancyhead[L]{Verzeichnisse} %% section description in the upper left corner
-\pagenumbering{roman}
 
 %%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%
@@ -106,9 +102,10 @@ halfparskip,
 %%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{titlepage}
-\begin{longtable}{l|r}
-{\includegraphics[height=1.5cm]{companylogo}} &
-{\includegraphics[height=1.5cm]{dhbw}}
+\begin{longtable}{|l|c|r|}
+{\includegraphics[height=1.7cm]{logo}} &
+{\includegraphics[height=1.05cm]{blank}} &
+{\includegraphics[height=1.7cm]{dhbw}}
 \end{longtable}
 % \enlargethispage{20mm}
 \bigskip
@@ -142,10 +139,18 @@ mmmmmmmmmmmmmmmmmmmmmmmmmm \= \kill
 %%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%
 
+\pagestyle{fancy}
+\fancyhf{} %% remove all previous settings
+
 \newpage
 \tableofcontents
 \newpage
+\pagestyle{fancy}
+\fancyhf{} %% clear all previous settings
+\fancyhead[R]{\thepage} %% pagenumber in the upper right corner
+\fancyhead[L]{VERZEICHNISSE} %% section description in the upper left corner
 \section*{Abkürzungsverzeichnis} %%Title for list of acronyms
+\addcontentsline{toc}{section}{Abkürzungsverzeichnis}
 \begin{acronym}[Name]
  \acro{PC}{Personal Computer}
 \end{acronym}
